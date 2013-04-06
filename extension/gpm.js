@@ -6,21 +6,20 @@ var inject = function (fn) {
 	// access to the embedding page. Thus, one of the
 	// ways to execute JS on the embedding page is to
 	// literally inject it into the DOM.
-  var dispatchMouseEvent = function(target, var_args) {
-    var e = document.createEvent("MouseEvents");
-    // If you need clientX, clientY, etc., you can call
-    // initMouseEvent instead of initEvent
-    e.initEvent.apply(e, Array.prototype.slice.call(arguments, 1));
-    target.dispatchEvent(e);
-  };
+	var dispatchMouseEvent = function(target, var_args) {
+		var e = document.createEvent("MouseEvents");
+		// if you need clientX, clientY, etc., you can call
+		// initMouseEvent instead of initEvent
+		e.initEvent.apply(e, Array.prototype.slice.call(arguments, 1));
+		target.dispatchEvent(e);
+	};
 	var script = document.createElement("script");
-	script.textContent = "var dispatchMouseEvent = "+dispatchMouseEvent+";(" + fn + ")();";
+	script.textContent = "var dispatchMouseEvent = " + dispatchMouseEvent + "; (" + fn + ")();";
 	(document.head || document.documentElement).appendChild(script);
 	script.parentNode.removeChild(script);
-
 };
 
-var injectJquery = function() {
+var injectjQuery = function() {
 	var script = document.createElement("script");
 	script.setAttribute("src", "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js");
 	(document.head || document.documentElement).appendChild(script);
@@ -30,7 +29,7 @@ var injectJquery = function() {
 !function (undefined) {
 
 	"use strict";
-  injectJquery();
+	injectjQuery();
 	var connected = false,
 	host = "127.0.0.1",
 	port = "9331",
@@ -53,30 +52,28 @@ var injectJquery = function() {
 				if (kcode === 20) {
 					console.log("Previous song.");
 					inject(function () {
-            element = document.getElementById('rew');
-            dispatchMouseEvent(element, 'mouseover', true, true);
-            dispatchMouseEvent(element, 'mousedown', true, true);
-            dispatchMouseEvent(element, 'mouseup', true, true);
-            
+						element = document.getElementById('rew');
+						dispatchMouseEvent(element, 'mouseover', true, true);
+						dispatchMouseEvent(element, 'mousedown', true, true);
+						dispatchMouseEvent(element, 'mouseup', true, true);
 					});
 				}
 				else if (kcode === 16) {
 					console.log("Play/pause.");
 					inject(function () {
-           element = document.getElementById('playPause');
-           dispatchMouseEvent(element, 'mouseover', true, true);
-           dispatchMouseEvent(element, 'mousedown', true, true);
-           dispatchMouseEvent(element, 'mouseup', true, true);
+						element = document.getElementById('playPause');
+						dispatchMouseEvent(element, 'mouseover', true, true);
+						dispatchMouseEvent(element, 'mousedown', true, true);
+						dispatchMouseEvent(element, 'mouseup', true, true);
 					});
 				}
 				else if (kcode === 19) {
 					console.log("Next song.");
 					inject(function () {
-            element = document.getElementById('ff');
-            dispatchMouseEvent(element, 'mouseover', true, true);
-            dispatchMouseEvent(element, 'mousedown', true, true);
-            dispatchMouseEvent(element, 'mouseup', true, true);
-            
+						element = document.getElementById('ff');
+						dispatchMouseEvent(element, 'mouseover', true, true);
+						dispatchMouseEvent(element, 'mousedown', true, true);
+						dispatchMouseEvent(element, 'mouseup', true, true);
 					});
 				}
 			};
@@ -98,4 +95,3 @@ var injectJquery = function() {
 	}();
 
 }();
-
