@@ -1,6 +1,6 @@
 {
 	"name": "Media Keys",
-	"description": "Allows using previous, play/pause, and next keys for Grooveshark.",
+	"description": "Allows using previous, play/pause, and next keys for Grooveshark and Google Play Music.",
 	"version": "0.0.9",
 	"manifest_version": 2,
 	"content_scripts": [{
@@ -10,5 +10,9 @@
 	{
 		"matches": ["*://www.rhapsody.com/*"],
 		"js": ["rhapsody.js"]
+	}, 
+	{
+		"matches": ["*://play.google.com/music/*"],
+		"js": ["gpm.js"]
 	}]
 }
