@@ -6,5 +6,9 @@
 	"content_scripts": [{
 		"matches": ["*://grooveshark.com/*"],
 		"js": ["grooveshark.js"]
+	},
+	{
+		"matches": ["*://www.rhapsody.com/*"],
+		"js": ["rhapsody.js"]
 	}]
 }
