@@ -5,14 +5,14 @@
 	"manifest_version": 2,
 	"content_scripts": [{
 		"matches": ["*://grooveshark.com/*"],
-		"js": ["grooveshark.js"]
+		"js": ["common.js", "grooveshark.js"]
 	},
 	{
 		"matches": ["*://www.rhapsody.com/*"],
-		"js": ["rhapsody.js"]
+		"js": ["common.js", "rhapsody.js"]
 	}, 
 	{
 		"matches": ["*://play.google.com/music/*"],
-		"js": ["gpm.js"]
+		"js": ["common.js", "gpm.js"]
 	}]
 }
