@@ -5,32 +5,25 @@
  * May God have mercy on my soul
  */
 inject(function() {
-  dispatchMouseEvent = function(target, var_args) {
-    var e = document.createEvent("MouseEvents");
-    // if you need clientX, clientY, etc., you can call
-    // initMouseEvent instead of initEvent
-    e.initEvent.apply(e, Array.prototype.slice.call(arguments, 1));
-    target.dispatchEvent(e);
-  };
-});
-
-
-inject(function() { 
-  clickElem = function(elem_id) {
-    element = document.getElementById(elem_id);
-    dispatchMouseEvent(element, 'mouseover', true, true);
-    dispatchMouseEvent(element, 'mousedown', true, true);
-    dispatchMouseEvent(element, 'mouseup', true, true);
+  clickDataId = function(data_id) {
+    var buttons = document.getElementsByClassName("player-middle")[0].children;
+    for (var i=0; i<buttons.length; i++) {
+      var elem = buttons[i];
+      if(elem.getAttribute("data-id") === data_id) {
+        elem.click();
+        return;
+      }
+    }
   };
 });
 
 var previous = function () {
-  clickElem('rew');
+  clickDataId('rewind');
 }
 var playPause = function () {
-  clickElem('playPause');
+  clickDataId('play-pause');
 }
 var next = function () {
-  clickElem('ff');
+  clickDataId('forward');
 }
 
